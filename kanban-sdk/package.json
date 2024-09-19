@@ -1,0 +1,39 @@
+{
+  "name": "@kanban/sdk",
+  "version": "0.0.1",
+  "description": "Type definitions for kanban-api",
+  "main": "api.ts",
+  "private": true,
+  "license": "ISC",
+  "scripts": {
+    "link": "rimraf ./bin/link && copyfiles -f package.json ./bin/link && tsc --project tsconfig.link.json",
+    "tsc": "tsc",
+    "lint": "eslint src/*/**"
+  },
+  "keywords": [],
+  "author": "",
+  "homepage": "",
+  "licenses": [
+    {
+      "type": "ISC"
+    }
+  ],
+  "repository": {
+    "type": "",
+    "url": ""
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.4",
+    "@typescript-eslint/eslint-plugin": "^8.2.0",
+    "@typescript-eslint/parser": "^8.2.0",
+    "copyfiles": "^2.4.1",
+    "eslint": "^9.9.0",
+    "eslint-config-google": "^0.14.0",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "axios": "^1.7.4",
+    "mongoose": "^8.6.1"
+  }
+}
