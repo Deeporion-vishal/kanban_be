@@ -31,4 +31,6 @@ router
   .patch(UserController.updateUserById)
   .delete(UserController.deleteUserById);
 
+router.route("/refresh-token").post(UserController.refreshToken);
+
 export default router;

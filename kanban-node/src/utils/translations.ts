@@ -109,3 +109,13 @@ export const TASK_UPDATE_SUCCESS:string="task updated successfully";
 
 
 export const PASSWORD:string="-password";
+
+export const TASK_CREATE_SUCCESS:string = "Task created successfully"
+
+export const SUB_TASK_CREATE_SUCCESS :string  = "Subtask created successfully"
+
+export const BOARD_CREATE_SUCCESS :string ="Boards created successfully"
+
+export const BOARD_FETCH_SUCCESS:string = "Boards fetched successfully"
+
+export const BOARD_UPDATE_SUCCESS:string = "Board updated successfully"

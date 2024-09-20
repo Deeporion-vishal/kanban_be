@@ -10,14 +10,18 @@ import Task from "../models/task.model";
 import SubTask from "../models/subtask.model";
 import {
   BOARD,
+  BOARD_CREATE_SUCCESS,
   BOARD_DELETE_SUCCESS,
+  BOARD_FETCH_SUCCESS,
   BOARD_NOT_FOUND,
+  BOARD_UPDATE_SUCCESS,
   CODE_200,
   CODE_404,
   SUB_TASK_LIST,
   TASK_LIST,
   USER_NOT_FOUND,
 } from "../utils/translations";
+import ApiResponse from "../utils/apiResponse"; 
 
 class BoardController {
   static getBoards: RequestHandler<{ userId: string }, {}, {}> =
@@ -29,12 +33,12 @@ class BoardController {
           populate: { path: TASK_LIST, populate: { path: SUB_TASK_LIST } },
         });
         if (!user) return next(new CustomError(USER_NOT_FOUND, CODE_404));
-        res.status(CODE_200).json({
-          success: true,
-          board: user.boards,
-        });
+        res.status(CODE_200).json(
+          new ApiResponse(CODE_200, { boards: user.boards }, BOARD_FETCH_SUCCESS)
+        );
       }
     );
+
   static saveBoard: RequestHandler<{ userId: string }, {}, IBoardRequest> =
     asyncErrorHandler(
       async (req: Request, res: Response, next: NextFunction) => {
@@ -49,10 +53,9 @@ class BoardController {
         })) as IBoard;
         user.boards.push(board._id as Types.ObjectId);
         await user.save();
-        res.status(CODE_200).json({
-          success: true,
-          board: board,
-        });
+        res.status(CODE_200).json(
+          new ApiResponse(CODE_200, { board }, BOARD_CREATE_SUCCESS)
+        );
       }
     );
 
@@ -60,13 +63,15 @@ class BoardController {
     asyncErrorHandler(
       async (req: Request, res: Response, next: NextFunction) => {
         const { boardId } = req.params;
-        const bodyObj:IBoardUpdatereq=req.body;
-        await Board.findByIdAndUpdate(boardId,bodyObj) as IBoard;
-        const board=await Board.findById(boardId) as IBoard;
-        res.status(CODE_200).json({ success: true, board });
-
+        const bodyObj: IBoardUpdatereq = req.body;
+        await Board.findByIdAndUpdate(boardId, bodyObj) as IBoard;
+        const board = await Board.findById(boardId) as IBoard;
+        res.status(CODE_200).json(
+          new ApiResponse(CODE_200, { board }, BOARD_UPDATE_SUCCESS)
+        );
       }
     );
+
   static deleteBoard: RequestHandler<{ boardId: string }, {}, {}> =
     asyncErrorHandler(
       async (req: Request, res: Response, next: NextFunction) => {
@@ -87,10 +92,9 @@ class BoardController {
         }
         await Task.deleteMany({ board: boardId });
         await Board.findByIdAndDelete(boardId);
-        res.status(CODE_200).json({
-          success: true,
-          message: BOARD_DELETE_SUCCESS,
-        });
+        res.status(CODE_200).json(
+          new ApiResponse(CODE_200, {}, BOARD_DELETE_SUCCESS)
+        );
       }
     );
 }

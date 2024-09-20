@@ -47,7 +47,7 @@ app.all("*", pageNotFound);
 
 app.use(errorResponse);
 
-const PORT = process.env.PORT || 5454; // PORT for the server
+const PORT = process.env.PORT || 5454; 
 app.listen(PORT, () => {
   console.log(`Server listening on port:${PORT}`);
 });

@@ -10,6 +10,7 @@ const boardSchema = new mongoose.Schema<IBoard>(
     },
     name: {
       type: String,
+      required : true
     },
     statusList: {
       type: [String],

@@ -1,7 +1,7 @@
 {
-  "name": "ecom-node",
+  "name": "kanban-node",
   "version": "1.0.0",
-  "description": "E-commerce backenmd",
+  "description": "kanban backend",
   "main": "app.ts",
   "scripts": {
     "dev": "NODE_ENV=development nodemon app.ts",

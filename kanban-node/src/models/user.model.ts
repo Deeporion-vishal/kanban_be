@@ -50,6 +50,7 @@ const userSchema = new mongoose.Schema<IUser>(
       type :Boolean ,
       default:false
     },
+    refreshToken: String,
     forgotPasswordToken: String,
     forgotPasswordTokenExpiration: Date,
   },
