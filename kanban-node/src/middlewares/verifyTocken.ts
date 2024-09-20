@@ -31,7 +31,6 @@ const verifyToken = (req:Request, res: Response, next: NextFunction) => {
         console.log("VERIFY JWT TOKEN", error);
         return next(new CustomError(ERR_UNAUTHORIZED, CODE_403));
       }
-      console.log(decodedToken);
       req.user = decodedToken;
       next();
     }

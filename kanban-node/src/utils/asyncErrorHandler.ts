@@ -9,7 +9,6 @@ const asyncErrorHandler = (
     try {
       await asyncFunc(req, res, next);
     } catch (error) {
-      console.log(error);
 
       return next(
         new CustomError(
