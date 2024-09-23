@@ -1,0 +1,14 @@
+{
+  "references": [],
+  "compilerOptions": {
+    "isolatedModules": true,
+    "composite": true,
+    "target": "ES2018",
+    "module": "CommonJS",
+    "outDir": "./bin/tsc",
+    "noEmit": false,
+    "declaration": true,
+    "sourceMap": false
+  },
+  "include": ["src/**/*.ts", "src/*.ts"]
+}

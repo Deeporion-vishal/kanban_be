@@ -1,0 +1,16 @@
+{
+  "files": [
+    "./src/api.ts",
+    "./src/utils.ts",
+    // "./src/axios/authUser.ts",
+    // "./src/axios/userApi.ts"
+  ],
+  "compilerOptions": {
+    "isolatedModules": true,
+    "target": "ES2018",
+    "module": "CommonJS",
+    "outDir": "./bin/link",
+    "declaration": true,
+    "sourceMap": true
+  }
+}
